@@ -1,0 +1,17 @@
+[package]
+name = "build-features"
+version = "0.1.0"
+edition = "2018"
+authors = ["Dumitory <dumitory@gmail.com>"]
+description = "A simple proc macro to create a vector that a list of included functions in a root package"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/dumitory-dev/build-features"
+keywords = ["build", "features", "get-features", "compile"]
+categories = ["no-std", "rust-patterns", "development-tools", "config"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+cargo_metadata = "0.14.1"
