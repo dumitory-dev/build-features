@@ -1,5 +1,5 @@
 # build-features
-A simple proc macro to create a vector that a list of included functions in a root package
+A simple proc macro to create a vector that a list of enabled features in a root package
 
 `Note: using this crate makes your build non-deterministic!`
 
