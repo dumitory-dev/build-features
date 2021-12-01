@@ -25,7 +25,7 @@ pub fn get_enabled_features(_cargo_file: TokenStream) -> TokenStream {
         .unwrap();
 
     //Get string of features
-    let root_packet_features = format!(
+    let root_package_features = format!(
         "{:?}",
         metadata
             .root_package()
@@ -37,7 +37,7 @@ pub fn get_enabled_features(_cargo_file: TokenStream) -> TokenStream {
     );
 
     //Without '[' in the  begin and ']' in the end
-    let slice_features = &root_packet_features[1..root_packet_features.len() - 1];
+    let slice_features = &root_package_features[1..root_package_features.len() - 1];
 
     let features_gen_code = features_gen_code.replace("FEATURES", slice_features);
 
