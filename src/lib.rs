@@ -5,7 +5,7 @@ use proc_macro::TokenStream;
 pub fn get_enabled_features(_cargo_file: TokenStream) -> TokenStream {
     //https://www.reddit.com/r/rust/comments/834g53/list_of_conditional_compilation_features_at/
     let features_gen_code = r#"
-        (|| -> Vec<&'static str>{
+    let enabled_features = (|| -> Vec<&'static str>{
             macro_rules! make_feat_list {
                 ($($feat:expr),*) => {
                     vec![ 
@@ -16,7 +16,7 @@ pub fn get_enabled_features(_cargo_file: TokenStream) -> TokenStream {
                     ]
                 }
             }
-            make_feat_list!("FEATURES")
+            make_feat_list!(FEATURES)
         })();
     "#;
 
