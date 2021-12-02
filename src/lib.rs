@@ -18,8 +18,20 @@ pub fn get_enabled_features(_cargo_file: TokenStream) -> TokenStream {
         let enabled_features:Vec<&'static str> = make_feat_list!(FEATURES);
     "#;
 
-    let metadata = cargo_metadata::MetadataCommand::new()
-        .manifest_path("./Cargo.toml")
+    let mut args = std::env::args().skip_while(|val| !val.starts_with("--manifest-path"));
+
+    let mut cmd = cargo_metadata::MetadataCommand::new();
+    match args.next() {
+        Some(ref p) if p == "--manifest-path" => {
+            cmd.manifest_path(args.next().unwrap());
+        }
+        Some(p) => {
+            cmd.manifest_path(p.trim_start_matches("--manifest-path="));
+        }
+        None => {}
+    };
+
+    let metadata = cmd
         .features(cargo_metadata::CargoOpt::AllFeatures)
         .exec()
         .unwrap();
