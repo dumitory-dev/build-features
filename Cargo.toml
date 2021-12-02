@@ -1,6 +1,6 @@
 [package]
 name = "build-features"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2018"
 authors = ["Dumitory <dumitory@gmail.com>"]
 description = "A simple proc macro to create a vector that a list of enabled features in a root package"
